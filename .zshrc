@@ -39,8 +39,6 @@ autoload -Uz promptinit
 promptinit
 prompt walters
 
-TERM=xterm-256color
-
 # Aliases
 alias python=python3
 alias pip=pip3
@@ -50,7 +48,9 @@ alias upgrade="sudo apt-get update && sudo apt-get upgrade && sudo apt-get autor
 alias dist-upgrade="sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove && sudo apt-get clean"
 alias noise="play -n synth brownnoise synth pinknoise mix synth sine amod 0.3 10"
 alias ls='ls --color=auto'
-alias vim=nvim
+alias icat="kitty +kitten icat"
 
 # Paths
 export PATH="$HOME/.local/bin:/usr/sbin:/sbin:$PATH"
+
+TERM=xterm-256color

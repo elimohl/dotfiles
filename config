@@ -154,7 +154,8 @@ bindsym $mod+Shift+p exec nautilus
 bindsym $mod+Shift+b exec palemoon
 bindsym $mod+p exec pidgin
 bindsym $mod+Shift+v exec "VirtualBox"
-bindsym $mod+x exec "light-locker-command --lock"
+#bindsym $mod+x exec "light-locker-command --lock"
+bindsym $mod+x exec "i3lock -c 000000"
 bindsym $mod+Shift+s exec "xfce4-screenshooter"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -165,10 +166,11 @@ bar {
 }
 
 exec --no-startup-id i3session restore
-exec --no-startup-id light-locker
+#exec --no-startup-id light-locker
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id cluster-net
+exec --no-startup-d feh --bg-scale $HOME/Downloads/hubble/PIA23126_hires.jpg
 
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2.5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2.5%- unmute

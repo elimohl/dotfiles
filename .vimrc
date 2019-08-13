@@ -42,9 +42,9 @@ call SetupVAM()
 " ACTIVATING PLUGINS
 
 " OPTION 1, use VAMActivate
-VAMActivate fugitive vimwiki khuno YouCompleteMe Syntastic vim-airline github:vim-airline/vim-airline-themes
+VAMActivate fugitive vimwiki github:itchyny/calendar.vim khuno YouCompleteMe Syntastic vim-airline github:vim-airline/vim-airline-themes
     \ github:flazz/vim-colorschemes github:luochen1990/rainbow ScrollColors github:scrooloose/nerdtree
-    \ obsession surround speeddating
+    \ obsession surround
 
 " OPTION 2: use call vam#ActivateAddons
 "call vam#ActivateAddons([PLUGIN_NAME], {})
@@ -97,7 +97,16 @@ set number
 "set nohlsearch
 set termguicolors
 "set autochdir
-"set ruler
+set ruler
+
+
+" Hybrid line numbers
+set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 
 " Prepends system clipboards.
@@ -123,6 +132,7 @@ set undoreload=10000        " number of lines to save for undo
 "colorscheme abbott
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = "medium"
+let g:airline_theme='wombat'
 
 
 " Set default browser
@@ -134,7 +144,7 @@ cmap w!! w !sudo tee > /dev/null %
 
 
 " Remove trailing whitespace
-nnoremap <F3> :%s/\s\+$//e <CR>
+nnoremap <F5> :%s/\s\+$//e <CR>
 
 
 " Syntasitc
@@ -190,17 +200,18 @@ set directory=.
 
 " Use F4 to toggle paste mode
 " Has opposite result with current .vimrc
-"nnoremap <F4> :set invpaste paste?<CR>  
+"nnoremap <F4> :set invpaste paste?<CR>
 "set pastetoggle=<F4>
 "set showmode
 
 
 " NERDTree
 map <F2> :NERDTreeToggle<CR>
+let NERDTreeShowHidden = 1
 "autocmd vimenter * NERDTree  " to open it on startup
 
 " Reload vimrc
-map <F5> :source ~/.vimrc<CR>
+"map <F5> :source ~/.vimrc<CR>
 
 " To navigate between splits with ctrl-j instead of ctrl-w j
 nnoremap <C-J> <C-W><C-J>
@@ -209,8 +220,8 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " YouCompleteMe bindings
-nnoremap <leader>jg :YcmCompleter GoTo<CR>
-nnoremap <leader>jr :YcmCompleter GoToReferences<CR>
-nnoremap <leader>jd :rightbelow YcmCompleter GetDoc<CR>
-nnoremap <leader>jt :YcmCompleter GetType<CR>
+nnoremap <leader>g :YcmCompleter GoTo<CR>
+nnoremap <leader>r :YcmCompleter GoToReferences<CR>
+nnoremap <leader>d :rightbelow YcmCompleter GetDoc<CR>
+nnoremap <leader>t :YcmCompleter GetType<CR>
 let g:ycm_goto_buffer_command = 'same-buffer'
