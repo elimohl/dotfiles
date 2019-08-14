@@ -17,6 +17,14 @@ runtime! debian.vim
 set nocompatible | filetype indent plugin on | syn on
 
 " Vim addon manager
+" Need this only behind the proxy that blocks git://
+let g:vim_addon_manager = {'scms': {'git': {}}}
+fun! MyGitCheckout(repository, targetDir)
+ let a:repository.url = substitute(a:repository.url, '^git://github', 'https://github', '')
+ return vam#utils#RunShell('git clone --depth=1 $.url $p', a:repository, a:targetDir)
+endfun
+let g:vim_addon_manager.scms.git.clone=['MyGitCheckout']
+
 fun! SetupVAM()
   let c = get(g:, 'vim_addon_manager', {})
   let g:vim_addon_manager = c
