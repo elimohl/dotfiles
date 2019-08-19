@@ -170,7 +170,7 @@ exec --no-startup-id i3session restore
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id cluster-net
-exec --no-startup-d feh --bg-scale $HOME/Downloads/hubble/PIA23126_hires.jpg
+exec --no-startup-id feh --bg-scale $HOME/Downloads/hubble/PIA23126_hires.jpg
 
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2.5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2.5%- unmute
